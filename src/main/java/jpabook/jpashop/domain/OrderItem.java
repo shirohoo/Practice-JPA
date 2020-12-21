@@ -37,13 +37,13 @@ public class OrderItem {
      * @param entity OrderItem
      * @return OrderItemDto
      */
-    public OrderItemDto toDto(OrderItem entity) {
+    public OrderItemDto toDto() {
         return OrderItemDto.builder()
-                           .id(entity.getId())
-                           .item(entity.getItem())
-                           .order(entity.getOrder())
-                           .orderPrice(entity.getOrderPrice())
-                           .count(entity.getCount())
+                           .id(this.getId())
+                           .item(this.getItem())
+                           .order(this.getOrder())
+                           .orderPrice(this.getOrderPrice())
+                           .count(this.getCount())
                            .build();
     }
 

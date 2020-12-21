@@ -2,7 +2,6 @@ package jpabook.jpashop.service;
 
 import jpabook.jpashop.ApplicationTests;
 import jpabook.jpashop.domain.Member;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.logging.Logger;
@@ -13,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @Transactional
 class MemberServiceTest extends ApplicationTests {
@@ -96,7 +95,7 @@ class MemberServiceTest extends ApplicationTests {
         List<Member> members = memberService.findAll();
 
         // then
-        assertThat(members.size()).isEqualTo(2);
+        assertThat(members.size()).isEqualTo(4);
     }
 
 }

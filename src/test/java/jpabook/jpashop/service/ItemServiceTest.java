@@ -83,7 +83,7 @@ class ItemServiceTest extends ApplicationTests {
         List<Item> items = itemService.findAll();
 
         // then
-        assertThat(items.size()).isEqualTo(2);
+        assertThat(items.size()).isEqualTo(6);
     }
 
 }
