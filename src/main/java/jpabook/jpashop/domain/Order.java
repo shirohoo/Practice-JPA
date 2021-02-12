@@ -52,7 +52,6 @@ public class Order {
 
     /**
      * 엔티티를 DTO로 복사
-     *
      * @param entity Order
      * @return OrderDto
      */
@@ -92,7 +91,6 @@ public class Order {
 
     /**
      * 주문정보를 받아 주문 생성
-     *
      * @param member     Member
      * @param delivery   Delivery
      * @param orderItems OrderItem...
@@ -126,7 +124,6 @@ public class Order {
 
     /**
      * 해당 주문 건의 총 가격 조회
-     *
      * @return orderItems.sum()
      */
     public int getTotalPrice() {

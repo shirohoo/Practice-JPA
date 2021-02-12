@@ -33,9 +33,10 @@ public class MemberController {
 
     /**
      * 회원가입
-     * @param form
-     * @param result
-     * @return
+     * @param form MemberFormDto
+     * @param result BindingResult
+     * @return 회원가입 성공 시 메인페이지로 리다이렉트 <br>
+     * 회원가입 실패 시 회원가입 페이지로 리다이렉트
      * @see POST
      */
     @PostMapping("/members/new")

@@ -31,7 +31,6 @@ public class OrderItem {
 
     /**
      * 엔티티를 DTO로 복사
-     *
      * @param entity OrderItem
      * @return OrderItemDto
      */
@@ -58,7 +57,6 @@ public class OrderItem {
 
     /**
      * 개별 아이템의 총 가격 조회
-     *
      * @return orderPrice * count
      */
     public int getTotalPrice() {

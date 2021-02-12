@@ -64,7 +64,6 @@ public class ItemController {
 
     /**
      * 상품수정 페이지
-     *
      * @param itemId Long
      * @return updateItemForm.html
      * @see GET
@@ -86,7 +85,6 @@ public class ItemController {
 
     /**
      * 상품 수정
-     *
      * @param form BookForm
      * @return 상품목록 조회 페이지로 리다이렉트
      * @see POST

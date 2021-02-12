@@ -32,7 +32,6 @@ public class Delivery {
 
     /**
      * 엔티티를 DTO로 복사
-     *
      * @param entity Delivery
      * @return DeliveryDto
      */
