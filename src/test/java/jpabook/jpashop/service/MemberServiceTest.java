@@ -18,7 +18,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @Transactional
 class MemberServiceTest extends ApplicationTests {
 
-    @Autowired MemberService memberService;
+    @Autowired
+    private MemberService memberService;
 
     private static final Logger log = LoggerFactory.getLogger(MemberServiceTest.class);
 
@@ -53,7 +54,7 @@ class MemberServiceTest extends ApplicationTests {
 
         // when
         Exception exception = assertThrows(IllegalStateException.class,
-                                                      () -> memberService.signUp(secondMember));
+                                           () -> memberService.signUp(secondMember));
 
         // then
         log.error(() -> "ERROR MESSAGE = " + exception.getMessage());

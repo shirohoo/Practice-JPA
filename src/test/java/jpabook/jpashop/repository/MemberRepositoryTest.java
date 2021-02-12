@@ -17,7 +17,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Transactional
 class MemberRepositoryTest extends ApplicationTests {
 
-    @Autowired private MemberRepository memberRepository;
+    @Autowired
+    private MemberRepository memberRepository;
 
     private static final Logger log = LoggerFactory.getLogger(MemberRepositoryTest.class);
 

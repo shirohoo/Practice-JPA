@@ -9,7 +9,6 @@ import jpabook.jpashop.dto.web.OrderSearchDto;
 import jpabook.jpashop.repository.ItemRepository;
 import jpabook.jpashop.repository.MemberRepository;
 import jpabook.jpashop.repository.OrderRepository;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,6 +28,7 @@ public class OrderService {
 
     /**
      * 주문 정보 생성 및 저장
+     *
      * @param memberId Long
      * @param itemId   Long
      * @param count    int
@@ -60,6 +60,7 @@ public class OrderService {
 
     /**
      * 주문 취소
+     *
      * @param id Long
      */
     @Transactional(readOnly = false)
@@ -70,6 +71,7 @@ public class OrderService {
 
     /**
      * 주문 검색
+     *
      * @param orderSearch OrderSearchDto
      * @return List<Order>
      */

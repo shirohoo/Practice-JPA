@@ -26,11 +26,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @Transactional
 class OrderServiceTest extends ApplicationTests {
 
-    @Autowired EntityManager em;
+    @Autowired
+    private EntityManager em;
 
-    @Autowired OrderService orderService;
+    @Autowired
+    private OrderService orderService;
 
-    @Autowired OrderRepository orderRepository;
+    @Autowired
+    private OrderRepository orderRepository;
 
     private static final Logger log = LoggerFactory.getLogger(OrderServiceTest.class);
 

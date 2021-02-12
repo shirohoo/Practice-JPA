@@ -16,13 +16,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Transactional
 class ItemServiceTest extends ApplicationTests {
 
-    @Autowired ItemService itemService;
+    @Autowired
+    private ItemService itemService;
 
     @Test
     @DisplayName("상품등록")
     public void save() throws Exception {
         // given
         Item book = Book.builder()
+                        .id(1L)
                         .name("JPA")
                         .price(10000)
                         .stockQuantity(10)
