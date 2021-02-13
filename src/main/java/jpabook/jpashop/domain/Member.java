@@ -1,5 +1,6 @@
 package jpabook.jpashop.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jpabook.jpashop.dto.domain.MemberDto;
 import lombok.*;
 
@@ -9,11 +10,12 @@ import java.util.List;
 
 /**
  * 회원 정보
+ *
  * @see ENTITY
  */
 @Entity
 @Builder
-@Getter
+@Getter @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
@@ -28,12 +30,14 @@ public class Member {
     @Embedded
     private Address address;
 
+    @JsonIgnore
     @Builder.Default
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
 
     /**
      * 엔티티를 DTO로 복사
+     *
      * @param entity Member
      * @return MemberDto
      */

@@ -1,5 +1,6 @@
 package jpabook.jpashop.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.dto.domain.OrderItemDto;
 import lombok.*;
@@ -21,6 +22,7 @@ public class OrderItem {
     @JoinColumn(name = "item_id")
     private Item item;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "orders_id")
     private Order order;
@@ -31,6 +33,7 @@ public class OrderItem {
 
     /**
      * 엔티티를 DTO로 복사
+     *
      * @param entity OrderItem
      * @return OrderItemDto
      */
@@ -57,6 +60,7 @@ public class OrderItem {
 
     /**
      * 개별 아이템의 총 가격 조회
+     *
      * @return orderPrice * count
      */
     public int getTotalPrice() {
@@ -65,9 +69,10 @@ public class OrderItem {
 
     /**
      * 개별 주문 정보 생성
-     * @param item Item
+     *
+     * @param item       Item
      * @param orderPrice int
-     * @param count int
+     * @param count      int
      * @return OrderItem
      */
     public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
