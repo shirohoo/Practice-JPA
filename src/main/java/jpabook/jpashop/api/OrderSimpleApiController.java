@@ -4,13 +4,13 @@ import jpabook.jpashop.domain.Address;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.dto.web.OrderSearchDto;
 import jpabook.jpashop.repository.OrderRepository;
+import jpabook.jpashop.repository.order.simplequery.OrderSimpleQueryRepository;
 import jpabook.jpashop.type.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -21,6 +21,8 @@ import java.util.stream.Collectors;
 public class OrderSimpleApiController {
 
     private final OrderRepository orderRepository;
+
+    private final OrderSimpleQueryRepository orderSimpleQueryRepository;
 
     /**
      * 주문 조회 API V1 <br>
@@ -57,10 +59,38 @@ public class OrderSimpleApiController {
     @GetMapping("/api/v2/simple-orders")
     public Result membersV2() {
         List<Order> orders = orderRepository.findOrders(new OrderSearchDto());
-        List<SimpleOrderDto> collect = orders.stream()
-                                             .map(SimpleOrderDto :: new)
-                                             .collect(Collectors.toList());
-        return new Result(collect);
+        return new Result(orders.stream()
+                                .map(SimpleOrderDto :: new)
+                                .collect(Collectors.toList())
+        );
+    }
+
+    /**
+     * 주문 조회 API V3 <br>
+     * N + 1 문제를 해결하기 위해 JPQL fetch join을 활용하였다.
+     *
+     * @return Result
+     * @see GET
+     */
+    @GetMapping("/api/v3/simple-orders")
+    public Result membersV3() {
+        List<Order> orders = orderSimpleQueryRepository.findAllWithMemberDelivery();
+        return new Result(orders.stream()
+                                .map(SimpleOrderDto :: new)
+                                .collect(Collectors.toList())
+        );
+    }
+
+    /**
+     * 주문 조회 API V4 <br>
+     * JPQL로 필요한 Column 만 조회하여 DTO에 인자로 전달 후 즉시 리턴
+     *
+     * @return Result
+     * @see GET
+     */
+    @GetMapping("/api/v4/simple-orders")
+    public Result membersV4() {
+        return new Result(orderSimpleQueryRepository.findOrderDtos());
     }
 
     /**
@@ -97,10 +127,10 @@ public class OrderSimpleApiController {
 
         public SimpleOrderDto(Order order) {
             this.orderId = order.getId();
-            this.name = order.getMember().getName();
+            this.name = order.getMember().getName(); // LAZY 초기화
             this.orderDateTime = order.getOrderDateTime();
             this.orderStatus = order.getStatus();
-            this.address = order.getMember().getAddress();
+            this.address = order.getMember().getAddress(); // LAZY 초기화
         }
 
     }

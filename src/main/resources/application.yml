@@ -6,13 +6,16 @@ spring:
     password:
 
   jpa:
+    open-in-view: true
     hibernate:
       ddl-auto: create
     properties:
       hibernate:
         format_sql: true
+#        필수
+        default_batch_fetch_size: 1000
 
 logging:
   level:
     org.hibernate.SQL: debug
-    org.hibernate.type: trace
+#    org.hibernate.type: trace
