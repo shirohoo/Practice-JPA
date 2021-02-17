@@ -25,16 +25,4 @@ public class OrderSimpleQueryDto {
 
     private Address address;
 
-    public OrderSimpleQueryDto(Long orderId,
-                               String name,
-                               LocalDateTime orderDateTime,
-                               OrderStatus orderStatus,
-                               Address address) {
-        this.orderId = orderId;
-        this.name = name;
-        this.orderDateTime = orderDateTime;
-        this.orderStatus = orderStatus;
-        this.address = address;
-    }
-
 }
