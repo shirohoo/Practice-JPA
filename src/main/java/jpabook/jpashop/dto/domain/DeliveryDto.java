@@ -6,10 +6,10 @@ import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.type.DeliveryStatus;
 import lombok.*;
 
+@Data
 @Builder
-@Getter @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
+@AllArgsConstructor
 public class DeliveryDto {
 
     private Long id;

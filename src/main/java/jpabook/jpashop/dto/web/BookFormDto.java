@@ -1,13 +1,16 @@
 package jpabook.jpashop.dto.web;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 /**
  * 상품 등록 시 클라이언트에서 넘어오는 Form
+ *
  * @see DTO
  */
-@Getter @Setter
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class BookFormDto {
 
     private Long id;
