@@ -1,4 +1,3 @@
-#Application 설정파일
 spring:
   datasource:
     url: jdbc:h2:tcp://localhost/~/jpashop
@@ -12,10 +11,8 @@ spring:
     properties:
       hibernate:
         format_sql: true
-#        필수
         default_batch_fetch_size: 1000
 
 logging:
   level:
     org.hibernate.SQL: debug
-#    org.hibernate.type: trace

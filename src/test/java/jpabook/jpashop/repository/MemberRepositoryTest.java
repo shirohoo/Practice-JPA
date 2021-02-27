@@ -10,6 +10,7 @@ import org.junit.platform.commons.logging.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,6 +20,9 @@ class MemberRepositoryTest extends ApplicationTests {
 
     @Autowired
     private MemberRepository memberRepository;
+
+    @Autowired
+    private EntityManager em;
 
     private static final Logger log = LoggerFactory.getLogger(MemberRepositoryTest.class);
 
@@ -114,6 +118,31 @@ class MemberRepositoryTest extends ApplicationTests {
 
         // then
         assertThat(members.size()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("프록시")
+    public void proxy() throws Exception {
+        // given
+        Member member = Member.builder()
+                              .name("프록시")
+                              .build();
+
+        em.persist(member);
+
+        em.flush();
+        em.clear();
+
+        Member find = em.find(Member.class, member.getId());
+        Member reference = em.getReference(Member.class, member.getId());
+
+        System.out.println("find = " + find);
+        System.out.println("reference = " + reference);
+        System.out.println("result = " + (find==reference));
+
+        // when
+
+        // then
     }
 
 }
