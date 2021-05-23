@@ -34,7 +34,6 @@ public class OrderItem {
     /**
      * 엔티티를 DTO로 복사
      *
-     * @param entity OrderItem
      * @return OrderItemDto
      */
     public OrderItemDto toDto() {
